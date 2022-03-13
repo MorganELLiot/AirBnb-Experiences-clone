@@ -1,21 +1,24 @@
 import Navbar from './components/Navbar.js';
 import Hero from './components/Hero.js';
 import Card from './components/Card.js';
-import zaferes from './images/zaferes.png';
+import data from './data.js';
 
 export default function App() {
+  const card = data.map(card => {
+      return (
+          <Card 
+              key={card.id}
+              {...card}
+          />
+      )
+  })
   return (
-    <div>
-      <Navbar />
-      <Hero /> 
-      <Card 
-        img={zaferes}
-        rating="5.0"
-        reviewCount="6"
-        country="USA"
-        title="Life Lessons with Katie Zaferes"
-        price="136"
-      />
-    </div>
-  );
+      <div>
+          <Navbar />
+          <Hero />
+          <div className="cards-list">
+            {card}
+          </div>
+      </div>
+  )
 }
